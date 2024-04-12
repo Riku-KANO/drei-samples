@@ -16,15 +16,19 @@ declare global {
 
 
 type Props = {
-  args: NamedArrayTuple<(width: number, height: number, depth: number) => void>;
+  width: number,
+  height: number,
+  depth: number,
   creaseAngle: number;
-} & Omit<JSX.IntrinsicElements["mesh"], "args">
+}
 
 
 export const RoundedCube: ForwardRefComponent<Props, Mesh> = React.forwardRef<Mesh, Props>(
   function RoundedCube(
     {
-      args: [width = 1, height = 1, depth = 1] = [],
+      width,
+      height,
+      depth,
       creaseAngle,
       ...props
     },
@@ -48,10 +52,14 @@ export const RoundedCube: ForwardRefComponent<Props, Mesh> = React.forwardRef<Me
       }
     }, [geomRef]);
 
-    RoundedBox
+    const args = [width, height, depth];
+
     return (
       <mesh ref={ref} {...props}>
-        <roundedBoxGeometry ref={geomRef} args={[[width, height, depth], params]} />
+        <roundedBoxGeometry
+          ref={geomRef}
+          args={[args, params]}
+        />
       </mesh>
     );
 

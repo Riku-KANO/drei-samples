@@ -30,7 +30,7 @@ export const Layout = ({
         <div>
           <PageList to="/geometries/Box" name="Box" />
           <PageList to="/geometries/RoundedBox" name="RoundedBox" />
-          <PageList to="/gepmetries/MyRoundedBox" name="MyRoundedBox" />
+          <PageList to="/geometries/MyRoundedBox" name="MyRoundedBox" />
         </div>
       </div>
       <div className="w-screen">{children}</div>
